@@ -1,11 +1,392 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HealthCraft</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
+
 <body>
-  GDG hands on git
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="HealthCraft.html">Healthcraft</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="About.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Operations
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Patient Registration</a></li>
+                            <li><a class="dropdown-item" href="#">Appointment Scheduling</a></li>
+                            <li><a class="dropdown-item" href="#"></a>Electronic Health Records (EHR)</li>
+                            <li><a class="dropdown-item" href="#"></a>Billing and Insurance</li>
+                            <li><a class="dropdown-item" href="#"></a>Pharmacy Management</li>
+                            <li><a class="dropdown-item" href="#"></a>Laboratory Information System (LIS)</li>
+                            <li><a class="dropdown-item" href="#"></a>Inventory Management</li>
+                            <li><a class="dropdown-item" href="#"></a>Human Resources Management</li>
+                            <li><a class="dropdown-item" href="#"></a>Quality Management</li>
+                            <li><a class="dropdown-item" href="#"></a>Medical Records Management</li>
+                            <li><a class="dropdown-item" href="#"></a>Patient Portal</li>
+                            <li><a class="dropdown-item" href="#"></a>Telemedicine</li>
+                            <li><a class="dropdown-item" href="#"></a>Analytics and Reporting</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Contact Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">📞 Phone:</a></li>
+                            <li><a class="dropdown-item" href="#">✉️ Email:</a></li>
+                            <li><a class="dropdown-item" href="#"></a>📍 Location:</li>
+                        </ul>
+                    </li>
+                </ul>
+               
+                <div class="mx-2">
+                    <button class="btn btn-success" type="button" data-bs-toggle="modal"
+                        data-bs-target="#LoginModal">Login</button>
+                    <button class="btn btn-success" type="button" data-bs-toggle="modal"
+                        data-bs-target="#SignUpModal">SignUp</button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="LoginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="LoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="LoginModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="LoginForm" onsubmit="return validateForm()">
+                        <div class="mb-3">
+                            <label for="LoginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="LoginEmail" required
+                                placeholder="example@mail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="LoginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="LoginPassword" required minlength="6"
+                                placeholder="At least 5 characters">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+
+                    <script>
+                        function validateForm() {
+                            const email = document.getElementById("LoginEmail").value.trim();
+                            const password = document.getElementById("LoginPassword").value;
+
+                            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                            if (!emailPattern.test(email)) {
+                                alert("Please enter a valid email address.");
+                                return false;
+                            }
+
+                            if (password.length < 5) {
+                                alert("Password must be at least 5 characters long.");
+                                return false;
+                            }
+
+                            return true;
+                        }
+                    </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="SignUpModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="SignUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="SignUpModalLabel">SignUp</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="SignUpForm" onsubmit="return validateForm()">
+                        <div class="mb-3">
+                            <label for="SignUpEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="SignUpEmail" required
+                                placeholder="example@mail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="SignUpPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="SignUpPassword" required minlength="6"
+                                placeholder="At least 5 characters">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+
+                    <script>
+                        function validateForm() {
+                            const email = document.getElementById("SignUpEmail").value.trim();
+                            const password = document.getElementById("SignUpPassword").value;
+
+                            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                            if (!emailPattern.test(email)) {
+                                alert("Please enter a valid email address.");
+                                return false;
+                            }
+
+                            if (password.length < 5) {
+                                alert("Password must be at least 5 characters long.");
+                                return false;
+                            }
+
+                            return true;
+                        }
+                    </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center text-center">
+        <h1>HealthCraft</h1>
+        <p>Hospital management system streamline
+            operations, enhancing patient care, and
+            improving overall efficiency in healthcare
+            facilities.</p>
+        <p>Managing patient records, scheduling
+            appointments, billing and invoicing, inventory
+            management, staff scheduling, and much more.</p>
+        <p>This software ensures better coordination among
+            different departments, reduces paperwork,
+            minimizes errors, and ultimately enhances the
+            overall quality of healthcare services</p>
+    </div>
+
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Assessment of
+                                Existing Systems</h2>
+                            <p class="card-text">Analyze the current digital infrastructure and data management
+                                platforms utilized across departments and facilities to store and manage patient
+                                information effectively.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2> Identify
+                                Data Sources</h2>
+                            <p class="card-text">Compile a comprehensive list of all patient data streams, including
+                                electronic health records (EHRs), laboratory information systems, imaging platforms,
+                                pharmacy databases, billing systems, and other relevant applications.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Data Mapping and Integration
+
+                            </h2>
+                            <p class="card-text">Design a robust data mapping framework to interpret the structure and
+                                schema of each source system. Identify optimal methods to unify disparate datasets into
+                                a centralized, interoperable repository.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Data Standardization
+
+                            </h2>
+                            <p class="card-text">Harmonize terminology, data formats, and attributes across all
+                                platforms to enable seamless interoperability. Align data models with healthcare
+                                standards such as HL7, SNOMED CT, LOINC, and ICD-10 for universal consistency.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Data Migration
+
+                            </h2>
+                            <p class="card-text">Develop and execute a secure and precise migration strategy to
+                                transition patient data into a centralized architecture. Leverage specialized migration
+                                tools and techniques to uphold data integrity, completeness, and accuracy throughout the
+                                process.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Data Security and Privacy
+
+                            </h2>
+                            <p class="card-text">Deploy advanced security protocols to safeguard sensitive patient
+                                information against unauthorized access, misuse, and breaches. Ensure compliance with
+                                global data protection regulations including HIPAA and GDPR.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Data Governance
+                            </h2>
+                            <p class="card-text">Establish clear governance frameworks to oversee data lifecycle
+                                management. Define roles for data stewardship, enforce quality standards, regulate
+                                access permissions, and implement effective data retention policies</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>OPD</h2>
+                            <p class="card-text">Hospital management software streamlines OPD appointments through
+                                features like online booking, real-time doctor availability, and automated reminders. It
+                                reduces patient wait times, boosts satisfaction, and helps healthcare providers optimize
+                                resources and manage schedules more effectively</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>IPD</h2>
+                            <p class="card-text">Hospital management software streamlines IPD (Inpatient Department)
+                                operations by enabling efficient bed assignment, patient admission tracking, room
+                                availability updates, and accurate billing. It facilitates coordinated care across
+                                departments through real-time records and enhances communication among healthcare
+                                staff—resulting in a smoother, more satisfying experience for both patients and medical
+                                professionals during hospitalization.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>OT</h2>
+                            <p class="card-text">Hospital management software streamlines operating theatre (OT)
+                                operations by enabling efficient surgery scheduling, resource allocation, procedure
+                                documentation, and inventory tracking. It ensures compliance with safety regulations,
+                                reduces conflicts, improves patient safety, and boosts overall surgical efficiency</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Integraated System</h2>
+                            <p class="card-text">Hospital management software improves lab test management by
+                                streamlining test orders, specimen scheduling, and result tracking. It integrates with
+                                lab equipment for automated data capture, reduces manual errors with barcode systems,
+                                and centralizes workflows for faster, more accurate diagnostics and timely report
+                                delivery</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2>Radiology</h2>
+                            <p class="card-text">Hospital management software streamlines radiology services by enabling
+                                efficient appointment scheduling, imaging order tracking, equipment management, and
+                                digital storage of radiology reports and images. Integration with PACS allows quick
+                                access and sharing of medical images, enhancing collaboration among healthcare staff.
+                                This improves patient care quality, reduces imaging wait times, and boosts operational
+                                efficiency in radiology departments</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p> <a href="/"
+                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+                aria-label="Bootstrap"> <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+                    <use xlink:href="#bootstrap"></use>
+                </svg> </a>
+            <ul class="nav col-md-4 justify-content-end">
+                <li class="nav-item"><a href="healthcare.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                <li class="nav-item"><a href="About.html" class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
